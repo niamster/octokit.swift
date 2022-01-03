@@ -13,7 +13,7 @@ public struct TokenConfiguration: Configuration {
     public var apiEndpoint: String
     public var accessToken: String?
     public let errorDomain = OctoKitErrorDomain
-    public let authorizationHeader: String? = "Basic"
+    public let authorizationHeader: String? = "token"
 
     /// Custom `Accept` header for API previews.
     ///
@@ -28,7 +28,7 @@ public struct TokenConfiguration: Configuration {
 
     public init(_ token: String? = nil, url: String = githubBaseURL, previewHeaders: [PreviewHeader] = []) {
         apiEndpoint = url
-        accessToken = token?.data(using: .utf8)!.base64EncodedString()
+        accessToken = token
         previewCustomHeaders = previewHeaders.map { $0.header }
     }
 }
